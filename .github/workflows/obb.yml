@@ -8,10 +8,13 @@ jobs:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
       - name: Install Onboardbase
         run: |-
-          wget https://onboardbase-cli.fra1.digitaloceanspaces.com/apt/onboardbase-latest.deb && \
-          sudo dpkg -i ./onboardbase-latest.deb && \
+          yarn global add @onboardbase/cli
           onboardbase --version
       - name: Setup Onboardbase
         run: |-
