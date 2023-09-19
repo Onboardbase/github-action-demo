@@ -1,0 +1,24 @@
+name: Deploy NodeJS App
+
+on:
+  push:
+
+jobs:
+  setup-build-deploy:
+    name: Setup, Build, and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Onboardbase
+        run: |-
+          wget https://onboardbase-cli.fra1.digitaloceanspaces.com/apt/onboardbase-latest.deb \
+          sudo dpkg -i ./onboardbase-latest.deb \
+          onboardbase --version
+      - name: Setup Onboardbase
+        run: |- 
+          onboardbase config:set-token $STAGING_ONBOARDBASE_TOKEN
+          onboardbase secrets --env
+        env:
+            ONBOARDBASE_PROJECT: string44
+            ONBOARDBASE_ENVIRONMENT: development
+            ONBOARDBASE_TOKEN: ${{ secrets.ONBOARDBASE_TOKEN }}
+
