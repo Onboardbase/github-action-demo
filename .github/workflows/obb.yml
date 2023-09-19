@@ -15,7 +15,8 @@ jobs:
           onboardbase --version
       - name: Setup Onboardbase
         run: |-
-          onboardbase secrets --env
+          onboardbase secrets --env > .env
+          cat .env
         env:
             ONBOARDBASE_PROJECT: new
             ONBOARDBASE_ENVIRONMENT: development
