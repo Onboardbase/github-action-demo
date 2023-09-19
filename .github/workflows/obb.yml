@@ -17,6 +17,7 @@ jobs:
           onboardbase --version
       - name: Setup Onboardbase
         run: |-
+          onboardbase config:set --token $ONBOARDBASE_TOKEN
           onboardbase secrets --env > .env
           cat .env
         env:
