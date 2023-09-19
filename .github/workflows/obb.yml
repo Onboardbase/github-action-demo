@@ -10,15 +10,15 @@ jobs:
     steps:
       - name: Install Onboardbase
         run: |-
-          wget https://onboardbase-cli.fra1.digitaloceanspaces.com/apt/onboardbase-latest.deb \
-          sudo dpkg -i ./onboardbase-latest.deb \
+          wget https://onboardbase-cli.fra1.digitaloceanspaces.com/apt/onboardbase-latest.deb && \
+          sudo dpkg -i ./onboardbase-latest.deb && \
           onboardbase --version
       - name: Setup Onboardbase
         run: |- 
           onboardbase config:set-token $STAGING_ONBOARDBASE_TOKEN
           onboardbase secrets --env
         env:
-            ONBOARDBASE_PROJECT: string44
+            ONBOARDBASE_PROJECT: new
             ONBOARDBASE_ENVIRONMENT: development
             ONBOARDBASE_TOKEN: ${{ secrets.ONBOARDBASE_TOKEN }}
 
