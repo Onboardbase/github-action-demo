@@ -18,7 +18,7 @@ jobs:
       - name: Setup Onboardbase
         run: |-
           onboardbase config:set --token $ONBOARDBASE_TOKEN
-          onboardbase secrets --env -p new -e development > .env
+          onboardbase secrets --env -p string44 -e development > .env
           cat .env
         env:
             ONBOARDBASE_TOKEN: ${{ secrets.ONBOARDBASE_TOKEN }}
