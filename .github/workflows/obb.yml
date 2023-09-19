@@ -14,8 +14,7 @@ jobs:
           sudo dpkg -i ./onboardbase-latest.deb && \
           onboardbase --version
       - name: Setup Onboardbase
-        run: |- 
-          onboardbase config:set-token $STAGING_ONBOARDBASE_TOKEN
+        run: |-
           onboardbase secrets --env
         env:
             ONBOARDBASE_PROJECT: new
